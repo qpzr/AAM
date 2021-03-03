@@ -11,10 +11,7 @@ easylist=(
   "https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt"
   "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_3_Spyware/filter.txt"
   "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt"
-  "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_14_Annoyances/filter.txt"
   "https://raw.githubusercontent.com/banbendalao/ADgk/master/ADgk.txt"
-  "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
- 
 )
 
 hosts=(
