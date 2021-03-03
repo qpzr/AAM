@@ -1,0 +1,56 @@
+name: anti-AD mod
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * *"
+  watch:
+    types: started
+ 
+env:
+  REPO_URL: https://github.com/privacy-protection-tools/anti-AD.git
+  REPO_BRANCH: master
+  DIY_P1_SH: mod.sh
+  TZ: Asia/Shanghai
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+    - uses: actions/checkout@main
+     
+    - name: Clone source code 
+      run: |
+        git clone $REPO_URL -b $REPO_BRANCH anti-AD   
+          
+    - name: Load custom configuration
+      run: |
+        sudo timedatectl set-timezone "$TZ"
+        sudo update-alternatives --set php /usr/bin/php7.4 
+        mkdir -p my 
+        chmod +x $DIY_P1_SH
+        [ -e $DIY_P1_SH ] && mv $DIY_P1_SH anti-AD/scripts/
+ 
+    - name: Run mod.sh 
+      run: |
+        sudo ./anti-AD/scripts/mod.sh
+        
+    - name: Git push assets to 空投回国
+      run: |
+        mv -f ./anti-AD/anti-ad-easylist.txt ./my/adf.txt
+        cd my
+        git init
+        git config user.name "一支穿云箭"
+        git config user.email "action@github.com"
+        git add .
+        git commit -m "$(date "+%Y-%m-%d %H:%M")~千军万马来相见！" -a
+        ${{ secrets.aam }}
+        
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 3
