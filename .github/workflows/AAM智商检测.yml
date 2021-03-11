@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Get Commit Hash
       id: getHash
       run: |
@@ -38,7 +37,7 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.PAT }}
-        event-type: anti-AD 源码更新
+        event-type: anti-AD Source Code Update
 
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
