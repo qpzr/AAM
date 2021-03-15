@@ -38,17 +38,17 @@ jobs:
       run: |
         sudo ./anti-AD/scripts/mod.sh
         
-    - name: Git push assets to 空投回国
+    - name: Git push
       run: |
         mv -f ./anti-AD/anti-ad-easylist.txt ./my/adf.txt
-        cd my
-        rm -rf .git
-        git init
-        git config user.name "一支穿云箭"
-        git config user.email "action@github.com"
-        git add .
-        git commit -m "$(date "+%Y-%m-%d %H:%M")~千军万马来相见！" -a
-        ${{ secrets.aam }}
+        
+    - name: Upload Sdk to release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.pat }}
+      with:
+        tag_name: v5.4
+        files: my/*
         
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
