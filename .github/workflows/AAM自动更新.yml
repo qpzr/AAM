@@ -20,6 +20,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
+    - name: Checkout
     - uses: actions/checkout@main
      
     - name: Clone source code 
@@ -38,17 +39,16 @@ jobs:
       run: |
         sudo ./anti-AD/scripts/mod.sh
         
-    - name: Git push
+    - name: Push
       run: |
         mv -f ./anti-AD/anti-ad-easylist.txt ./my/adf.txt
-        
-    - name: Upload Sdk to release
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.pat }}
-      with:
-        tag_name: v5.4
-        files: my/*
+        cd my
+        git init
+        git config user.name "一支穿云箭"
+        git config user.email "action@github.com"
+        git add .
+        git commit -m "$(date "+%Y-%m-%d %H:%M")~千军万马来相见！" -a
+        ${{ secrets.aam }}
         
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
