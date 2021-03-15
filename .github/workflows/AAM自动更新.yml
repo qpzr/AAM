@@ -42,6 +42,7 @@ jobs:
       run: |
         mv -f ./anti-AD/anti-ad-easylist.txt ./my/adf.txt
         cd my
+        rm -rf .git
         git init
         git config user.name "一支穿云箭"
         git config user.email "action@github.com"
