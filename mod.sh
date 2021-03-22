@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sed -i '67,205d' ./scripts/lib/writerFormat.class.php 
-
 source /etc/profile
 
 cd $(cd "$(dirname "$0")";pwd)
