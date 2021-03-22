@@ -17,6 +17,7 @@ easylist=(
 hosts=(
   "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
   "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
+  "https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts"
   "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
   "https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-hosts-online.txt"
 )
@@ -37,6 +38,9 @@ rm -f ./origin-files/strict-hosts*
 rm -f ./origin-files/dead-hosts*
 
 cp ./origin-files/some-else.txt ./origin-files/dead-hosts444.txt
+
+curl --connect-timeout 60 -s -o - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list \
+ | grep -F 'DOMAIN-SUFFIX,' | sed 's/DOMAIN-SUFFIX,/127.0.0.1 /g' >./origin-files/hosts998.txt
 
 curl --connect-timeout 60 -s -o - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list \
  | grep -F 'DOMAIN-SUFFIX,' | sed 's/DOMAIN-SUFFIX,/127.0.0.1 /g' >./origin-files/hosts999.txt
