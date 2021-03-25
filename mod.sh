@@ -16,13 +16,11 @@ easylist=(
 )
 
 hosts=(
-  "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
   "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
   "https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts"
   "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
   "https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-hosts-online.txt"
-  "https://gitlab.com/quidsup/notrack-blocklists/raw/master/trackers.hosts"
-  "https://gitlab.com/quidsup/notrack-blocklists/raw/master/malware.hosts"
+  "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
 )
 
 strict_hosts=(
