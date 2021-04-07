@@ -23,6 +23,7 @@ hosts=(
   "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
   "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext"
   "https://gitlab.com/quidsup/notrack-blocklists/raw/master/malware.hosts"
+  "https://raw.githubusercontent.com/StevenBlack/hosts/master/data/StevenBlack/hosts"
 )
 
 strict_hosts=(
