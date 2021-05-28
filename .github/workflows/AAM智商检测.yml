@@ -2,7 +2,7 @@ name: AAM智商检测
 
 env:
   REPO_URL: https://github.com/privacy-protection-tools/anti-AD.git 
-  REPO_BRANCH: master
+  REPO_BRANCH: scripts
 
 on:
   workflow_dispatch:
