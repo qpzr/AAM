@@ -7,7 +7,6 @@ cd $(cd "$(dirname "$0")";pwd)
 easylist=(
   "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt"
   "https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt"
-  "https://raw.githubusercontent.com/easylist/easylist/gh-pages/easylist.txt"
   "https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt"
   "https://raw.githubusercontent.com/banbendalao/ADgk/master/ADgk.txt"
   "https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/combined_original_trackers.txt"
