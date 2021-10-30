@@ -17,7 +17,6 @@ hosts=(
   "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
   "https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts"
   "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
-  "https://raw.githubusercontent.com/curbengh/urlhaus-filter/master/urlhaus-filter-hosts-online.txt"
 )
 
 strict_hosts=(
