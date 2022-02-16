@@ -12,7 +12,6 @@ easylist=(
   "https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/combined_original_trackers.txt"
   "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt"
   "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"
-  "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt"
 )
 
