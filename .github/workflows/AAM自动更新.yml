@@ -32,7 +32,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo update-alternatives --set php /usr/bin/php7.4 
         mkdir -p my
-        sed -i 's/third-party/first-party|third-party|1p|3p|all/g' anti-AD/scripts/lib/addressMaker.class.php
+        sed -i 's/third-party/first-party|third-party|1p|3p|all|doc/g' anti-AD/scripts/lib/addressMaker.class.php
         chmod +x $DIY_P1_SH
         [ -e $DIY_P1_SH ] && mv $DIY_P1_SH anti-AD/scripts/
  
