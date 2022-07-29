@@ -20,7 +20,6 @@ hosts=(
   "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
   "https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts"
   "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
-  "https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Xiaomi-Extension.txt"
 )
 
 strict_hosts=(
