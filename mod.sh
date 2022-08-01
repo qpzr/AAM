@@ -14,6 +14,7 @@ easylist=(
   "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
+  "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt"
 )
 
 hosts=(
