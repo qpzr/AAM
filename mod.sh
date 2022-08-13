@@ -21,6 +21,7 @@ easylist=(
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
   "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/whitelist.txt"
+  "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/mobile.txt"
 )
 
 hosts=(
