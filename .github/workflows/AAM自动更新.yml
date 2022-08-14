@@ -42,10 +42,10 @@ jobs:
  
     - name: Push
       run: |
-        curl -O https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-ublock.txt
-        curl -O https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/minority-mv.txt
         mv -f ./anti-AD/anti-ad-easylist.txt ./my/adf.txt
         cd my
+        curl -O https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-ublock.txt
+        curl -O https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/minority-mv.txt
         git init
         git config user.name "一支穿云箭"
         git config user.email "action@github.com"
