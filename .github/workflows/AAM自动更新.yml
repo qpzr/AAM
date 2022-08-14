@@ -39,11 +39,11 @@ jobs:
     - name: Run mod.sh 
       run: |
         sudo ./anti-AD/scripts/mod.sh
-        curl -o https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-ublock.txt ./my/cjxu.txt
-        curl -o https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/minority-mv.txt ./my/mmv.txt
-        
+ 
     - name: Push
       run: |
+        curl -O https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-ublock.txt
+        curl -O https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/minority-mv.txt
         mv -f ./anti-AD/anti-ad-easylist.txt ./my/adf.txt
         cd my
         git init
