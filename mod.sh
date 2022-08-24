@@ -37,7 +37,6 @@ strict_hosts=(
 dead_hosts=(
   "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/domains.dead.txt"
   "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/hostnames.dead.txt"
-  "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/hostnames.whitelist.txt"
 )
 
 rm -f ./origin-files/easylist*
