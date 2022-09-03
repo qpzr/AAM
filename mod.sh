@@ -15,7 +15,6 @@ easylist=(
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
   "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt"
-  "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/rules.txt"
   "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_English/filter.txt"
   "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_14_Annoyances/filter.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt"
