@@ -39,6 +39,7 @@ jobs:
     - name: Run mod.sh 
       run: |
         sudo ./anti-AD/scripts/mod.sh
+        
  
     - name: Push
       run: |
