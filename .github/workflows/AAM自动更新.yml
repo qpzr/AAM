@@ -4,7 +4,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
-    - cron: "00 10 * * *"
+    - cron: "0 10/24 * * *"
   watch:
     types: started
  
@@ -16,7 +16,7 @@ env:
  
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-2latest
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
