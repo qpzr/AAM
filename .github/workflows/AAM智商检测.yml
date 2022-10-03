@@ -1,13 +1,13 @@
 name: AAM智商检测
 
 env:
-  REPO_URL: https://github.com/privacy-protection-tools/anti-AD.git 
-  REPO_BRANCH: adlist-maker
+  REPO_URL: https://github.com/easylist/easylistchina.git
+  REPO_BRANCH: master
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 4/12 * * *
+    - cron: 0 10 * * *
 
 jobs:
   check:
