@@ -21,7 +21,6 @@ easylist=(
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
-  "https://raw.githubusercontent.com/damengzhu/banad/main/dnslist.txt"
 )
 
 hosts=(
