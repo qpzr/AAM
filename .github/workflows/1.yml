@@ -3,8 +3,6 @@ name: anti-AD mod
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: "0 10/24 * * *"
   watch:
     types: started
  
