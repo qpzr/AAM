@@ -27,9 +27,6 @@ hosts=(
   "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
 )
 
-strict_hosts=(
-  ""
-)
 
 dead_hosts=(
   "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/domains.dead.txt"
@@ -65,17 +62,6 @@ do
   fi
 done
 
-for i in "${!strict_hosts[@]}"
-do
-  echo "开始下载 strict-hosts${i}..."
-  curl -o "./origin-files/strict-hosts${i}.txt" --connect-timeout 60 -s "${strict_hosts[$i]}"
-  # shellcheck disable=SC2181
-  if [ $? -ne 0 ];then
-    echo '下载失败，请重试'
-    exit 1
-  fi
-done
-
 for i in "${!dead_hosts[@]}"
 do
   echo "开始下载 dead-hosts${i}..."
@@ -87,7 +73,6 @@ do
   fi
 done
 
-
 cd origin-files
 
 cat hosts*.txt | grep -v -E "^((#.*)|(\s*))$" \
@@ -95,10 +80,6 @@ cat hosts*.txt | grep -v -E "^((#.*)|(\s*))$" \
  | sed s/0.0.0.0/127.0.0.1/g | sed s/::/127.0.0.1/g | sort \
  | uniq >base-src-hosts.txt
 
-cat strict-hosts*.txt | grep -v -E "^((#.*)|(\s*))$" \
- | grep -v -E "^[0-9\.:]+\s+(ip6\-)?(localhost|loopback)$" \
- | sed s/0.0.0.0/127.0.0.1/g | sed s/::/127.0.0.1/g | sort \
- | uniq >base-src-strict-hosts.txt
 
 cat dead-hosts*.txt | grep -v -E "^(#|\!)" \
  | sort \
