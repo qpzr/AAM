@@ -20,6 +20,9 @@ easylist=(
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt"
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
+  "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt"
+  "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt"
+  "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt"
 )
 
 hosts=(
