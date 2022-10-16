@@ -27,18 +27,12 @@ hosts=(
   "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
 )
 
-
 dead_hosts=(
   "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/domains.dead.txt"
   "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/hostnames.dead.txt"
 )
 
-rm -f ./origin-files/easylist*
-rm -f ./origin-files/hosts*
-rm -f ./origin-files/strict-hosts*
-rm -f ./origin-files/dead-hosts*
-
-cp ./origin-files/some-else.txt ./origin-files/dead-hosts444.txt
+rm -f ./origin-files/
 
 for i in "${!easylist[@]}"
 do
