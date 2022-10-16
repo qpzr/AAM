@@ -32,7 +32,7 @@ dead_hosts=(
   "https://raw.githubusercontent.com/notracking/hosts-blocklists-scripts/master/hostnames.dead.txt"
 )
 
-rm -f ./origin-files/
+rm -f ./origin-files/*.txt
 
 for i in "${!easylist[@]}"
 do
