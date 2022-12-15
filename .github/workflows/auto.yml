@@ -14,7 +14,7 @@ env:
  
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
@@ -28,7 +28,6 @@ jobs:
     - name: Load custom configuration
       run: |
         sudo timedatectl set-timezone "$TZ"
-        sudo update-alternatives --set php /usr/bin/php7.4 
         mkdir -p my
         chmod +x $DIY_P1_SH
         [ -e $DIY_P1_SH ] && mv $DIY_P1_SH anti-AD/scripts/
