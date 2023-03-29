@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
      
     - name: Clone source code 
       run: |
@@ -51,7 +51,7 @@ jobs:
         ${{ secrets.aam }}
         
     - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
+      uses: Mattraks/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 3
