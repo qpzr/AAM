@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
   watch:
     types: started
+
  
 env:
   REPO_URL: https://github.com/privacy-protection-tools/anti-AD.git
