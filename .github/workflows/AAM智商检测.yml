@@ -38,6 +38,7 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
         event-type: anti-AD Source Code Update
+        
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
