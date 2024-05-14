@@ -9,7 +9,7 @@ on:
  
 env:
   REPO_URL: https://github.com/privacy-protection-tools/anti-AD.git
-  REPO_BRANCH: adlist-maker
+  REPO_BRANCH: dev
   DIY_P1_SH: mod.sh
   TZ: Asia/Shanghai
  
