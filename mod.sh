@@ -14,10 +14,6 @@ easylist=(
 
 )
 
-hosts=(
-  "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
-)
-
 rm -f ./origin-files/*.txt
 
 for i in "${!easylist[@]}"
