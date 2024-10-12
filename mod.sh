@@ -1,5 +1,3 @@
-#!/bin/bash
-
 source /etc/profile
 set -o errexit
 
