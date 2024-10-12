@@ -38,8 +38,8 @@ jobs:
  
     - name: Run mod.sh 
       run: |
-        sudo ./anti-AD/scripts/mod.sh
-        sudo ./anti-AD/scripts/moa.sh
+        /bin/bash ./anti-AD/scripts/mod.sh
+        /bin/bash ./anti-AD/scripts/moa.sh
         
  
     - name: Push
