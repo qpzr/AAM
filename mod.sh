@@ -111,6 +111,11 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 
 cd ../
 
+source /etc/profile
+
+cd $(cd "$(dirname "$0")";pwd)
+
+echo
 php make-addr.php
 
 echo
