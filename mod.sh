@@ -8,25 +8,6 @@ cd "$(cd "$(dirname "$0")"; pwd)"
 mkdir ./raw-sources
 rm -rf ./origin-files/upstream-*.txt
 
-
-easylist=(
-  'https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt'
-  ''
-  'https://'
-  'https://raw.githubusercontent.com/'
-  'https://'
-  'https://raw.githubusercontent.com/'
-
-#!/bin/bash
-
-source /etc/profile
-set -o errexit
-
-cd "$(cd "$(dirname "$0")"; pwd)"
-[ -e './raw-sources' ] && rm -rf ./raw-sources
-mkdir ./raw-sources
-rm -rf ./origin-files/upstream-*.txt
-
 easylist=(
 	'https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt'
 	'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_224_Chinese/filter.txt'
