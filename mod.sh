@@ -42,6 +42,7 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 
 cd ../
 
-php ./tools/make-addr.php
+php make-addr.php
+
 echo
 php ./tools/easylist-extend.php ../anti-ad-easylist.txt
