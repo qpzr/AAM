@@ -11,13 +11,39 @@ rm -rf ./origin-files/upstream-*.txt
 
 easylist=(
   'https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt'
-  'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_224_Chinese/filter.txt'
-  'https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt'
-  'https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/data/combined_original_trackers.txt'
-  'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt'
-  'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt'
+  ''
+  'https://'
+  'https://raw.githubusercontent.com/'
+  'https://'
+  'https://raw.githubusercontent.com/'
 
+#!/bin/bash
+
+source /etc/profile
+set -o errexit
+
+cd "$(cd "$(dirname "$0")"; pwd)"
+[ -e './raw-sources' ] && rm -rf ./raw-sources
+mkdir ./raw-sources
+rm -rf ./origin-files/upstream-*.txt
+
+easylist=(
+	'https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt'
+	'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_224_Chinese/filter.txt'
+	'https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt'
+	'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt'
+	'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt'
+	'https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/data/combined_original_trackers.txt'
 )
+hosts=(
+)
+strict_hosts=(
+)
+dead_hosts=(
+)
+
+# The script uses '^[a-zA-Z0-9\.-]+\.[a-zA-Z]+$' to match a domain in many cases
+# Some punny code (top) domains, like 'example.xn--q9jyb4c', will be ignored
 
 for i in "${!easylist[@]}"; do
 	echo "Start to download easylist-${i}..."
@@ -108,7 +134,10 @@ sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
 	grep -E '\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/wildcard-src-easylist.txt
 sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
+sed '/^#/d' ./origin-files/upstream-hosts.txt | LC_ALL=C sort -u >./origin-files/base-src-hosts.txt
+sed '/^#/d' ./origin-files/upstream-strict-hosts.txt | LC_ALL=C sort -u >./origin-files/base-src-strict-hosts.txt
+sed '/^#/d' ./origin-files/upstream-dead-hosts.txt | LC_ALL=C sort -u >./origin-files/base-dead-hosts.txt
 
 cd ../
-
-/bin/bash ./scripts/build-list.sh
+php make-addr.php
+php ./tools/easylist-extend.php ../anti-ad-easylist.txt
