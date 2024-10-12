@@ -111,4 +111,4 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 
 cd ../
 
-php make-addr.php
+/bin/bash ./scripts/build-list.sh
