@@ -11,6 +11,7 @@ env:
   REPO_URL: https://github.com/privacy-protection-tools/anti-AD.git
   REPO_BRANCH: adlist-maker
   DIY_P1_SH: mod.sh
+  DIY_P2_SH: moa.sh
   TZ: Asia/Shanghai
  
 jobs:
@@ -31,11 +32,14 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         mkdir -p my
         chmod +x $DIY_P1_SH
+        chmod +x $DIY_P2_SH
         [ -e $DIY_P1_SH ] && mv $DIY_P1_SH anti-AD/scripts/
+        [ -e $DIY_P2_SH ] && mv $DIY_P2_SH anti-AD/scripts/
  
     - name: Run mod.sh 
       run: |
         sudo ./anti-AD/scripts/mod.sh
+        sudo ./anti-AD/scripts/moa.sh
         
  
     - name: Push
