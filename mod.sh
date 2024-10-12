@@ -1,8 +1,13 @@
 #!/bin/bash
 
 source /etc/profile
+set -o errexit
 
-cd $(cd "$(dirname "$0")";pwd)
+cd "$(cd "$(dirname "$0")"; pwd)"
+[ -e './raw-sources' ] && rm -rf ./raw-sources
+mkdir ./raw-sources
+rm -rf ./origin-files/upstream-*.txt
+
 
 easylist=(
   'https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt'
