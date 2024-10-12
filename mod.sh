@@ -19,8 +19,6 @@ easylist=(
 
 )
 
-rm -f ./origin-files/*.txt
-
 for i in "${!easylist[@]}"; do
 	echo "Start to download easylist-${i}..."
 	tMark="$(date +'%Y-%m-%d %H:%M:%S %Z')"
