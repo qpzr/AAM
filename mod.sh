@@ -15,7 +15,6 @@ easylist=(
   "https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/data/combined_original_trackers.txt"
   "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt"
   "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt"
-
 )
 
 for i in "${!easylist[@]}"; do
@@ -46,8 +45,6 @@ cat dead-hosts*.txt | grep -v -E "^(#|\!)" \
 
 cd ../
 
-echo
 php make-addr.php
 
-echo
 php ./tools/easylist-extend.php ../anti-ad-easylist.txt
