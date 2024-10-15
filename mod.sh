@@ -42,28 +42,6 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 #cat easylist*.txt | grep -E "\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$" | sort | uniq >wildcard-src-easylist.txt
 #cat easylist*.txt | grep -E "^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^" | sort | uniq >whiterule-src-easylist.txt
 
-for i in "${!dead_hosts[@]}"
-do
-  echo "开始下载 dead-hosts${i}..."
-  curl -o "./origin-files/dead-hosts${i}.txt" --connect-timeout 60 -s "${dead_hosts[$i]}"
-  # shellcheck disable=SC2181
-  if [ $? -ne 0 ];then
-    echo '下载失败，请重试'
-    exit 1
-  fi
-done
-
-for i in "${!hosts[@]}"
-do
-  echo "开始下载 hosts${i}..."
-  curl -o "./origin-files/hosts${i}.txt" --connect-timeout 60 -s "${hosts[$i]}"
-  # shellcheck disable=SC2181
-  if [ $? -ne 0 ];then
-    echo '下载失败，请重试'
-    exit 1
-  fi
-done
-
 cd origin-files
 
 cat hosts-*.txt | grep -v -E "^((#.*)|(\s*))$" \
