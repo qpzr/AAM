@@ -40,7 +40,7 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 
 cd origin-files
 
-touch hosts.txt
+touch 1-hosts.txt
 
 cd ../
 
