@@ -7,7 +7,7 @@ cd "$(cd "$(dirname "$0")"; pwd)"
 [ -e './raw-sources' ] && rm -rf ./raw-sources
 mkdir ./raw-sources
 rm -rf ./origin-files/*.txt
-touch origin-files/hosts.txt
+touch origin-files/base-src-hosts.txt
 
 easylist=(
   "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt"
