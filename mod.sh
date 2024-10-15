@@ -7,7 +7,6 @@ cd "$(cd "$(dirname "$0")"; pwd)"
 [ -e './raw-sources' ] && rm -rf ./raw-sources
 mkdir ./raw-sources
 rm -rf ./origin-files/*.txt
-touch origin-files/base-src-hosts.txt
 
 easylist=(
   "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt"
@@ -39,7 +38,14 @@ sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
 sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
 
+cd origin-files
+
+touch hosts.txt
+
 cd ../
+
+echo
 php make-addr.php
+
 echo
 php ./tools/easylist-extend.php ../anti-ad-easylist.txt
