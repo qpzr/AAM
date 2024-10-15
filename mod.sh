@@ -28,28 +28,6 @@ for i in "${!easylist[@]}"; do
 		LC_ALL=C sort -u >>./origin-files/upstream-easylist.txt
 done
 
-for i in "${!dead_hosts[@]}"
-do
-  echo "开始下载 dead-hosts${i}..."
-  curl -o "./origin-files/dead-hosts${i}.txt" --connect-timeout 60 -s "${dead_hosts[$i]}"
-  # shellcheck disable=SC2181
-  if [ $? -ne 0 ];then
-    echo '下载失败，请重试'
-    exit 1
-  fi
-done
-
-for i in "${!hosts[@]}"
-do
-  echo "开始下载 hosts${i}..."
-  curl -o "./origin-files/hosts${i}.txt" --connect-timeout 60 -s "${hosts[$i]}"
-  # shellcheck disable=SC2181
-  if [ $? -ne 0 ];then
-    echo '下载失败，请重试'
-    exit 1
-  fi
-done
-
 rm -rf ./raw-sources/
 
 sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
@@ -64,6 +42,10 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 
 cd ../
 
+source /etc/profile
+
+cd $(cd "$(dirname "$0")";pwd)
+echo
 php make-addr.php
 echo
 php ./tools/easylist-extend.php ../anti-ad-easylist.txt
