@@ -42,19 +42,6 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 #cat easylist*.txt | grep -E "\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$" | sort | uniq >wildcard-src-easylist.txt
 #cat easylist*.txt | grep -E "^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^" | sort | uniq >whiterule-src-easylist.txt
 
-cd origin-files
-
-cat hosts-*.txt | grep -v -E "^((#.*)|(\s*))$" \
- | grep -v -E "^[0-9\.:]+\s+(ip6\-)?(localhost|loopback)$" \
- | sed s/0.0.0.0/127.0.0.1/g | sed s/::/127.0.0.1/g | sort \
- | uniq >base-src-hosts.txt
-
-
-cat dead-hosts-*.txt | grep -v -E "^(#|\!)" \
- | sort \
- | uniq >base-dead-hosts.txt
- 
-
 cd ../
 php make-addr.php
 echo
