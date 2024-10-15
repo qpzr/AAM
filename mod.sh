@@ -65,8 +65,6 @@ do
   fi
 done
 
-cd origin-files
-
 rm -rf ./raw-sources/
 
 sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
