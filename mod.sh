@@ -30,9 +30,41 @@ for i in "${!easylist[@]}"; do
 		LC_ALL=C sort -u >>./origin-files/upstream-easylist.txt
 done
 
-rm -rf ./raw-sources/
+for i in "${!dead_hosts[@]}"
+do
+  echo "开始下载 dead-hosts${i}..."
+  curl -o "./origin-files/dead-hosts${i}.txt" --connect-timeout 60 -s "${dead_hosts[$i]}"
+  # shellcheck disable=SC2181
+  if [ $? -ne 0 ];then
+    echo '下载失败，请重试'
+    exit 1
+  fi
+done
 
-touch hosts.txt
+for i in "${!hosts[@]}"
+do
+  echo "开始下载 hosts${i}..."
+  curl -o "./origin-files/hosts${i}.txt" --connect-timeout 60 -s "${hosts[$i]}"
+  # shellcheck disable=SC2181
+  if [ $? -ne 0 ];then
+    echo '下载失败，请重试'
+    exit 1
+  fi
+done
+
+cd origin-files
+
+cat hosts*.txt | grep -v -E "^((#.*)|(\s*))$" \
+ | grep -v -E "^[0-9\.:]+\s+(ip6\-)?(localhost|loopback)$" \
+ | sed s/0.0.0.0/127.0.0.1/g | sed s/::/127.0.0.1/g | sort \
+ | uniq >base-src-hosts.txt
+
+
+cat dead-hosts*.txt | grep -v -E "^(#|\!)" \
+ | sort \
+ | uniq >base-dead-hosts.txt
+ 
+rm -rf ./raw-sources/
 
 sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
 	grep -E '^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/base-src-easylist.txt
