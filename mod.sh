@@ -40,7 +40,9 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 
 cd origin-files
 
-touch 1-hosts.txt
+cat dead-hosts*.txt | grep -v -E "^(#|\!)" \
+ | sort \
+ | uniq >base-dead-hosts.txt
 
 cd ../
 
