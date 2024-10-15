@@ -6,7 +6,7 @@ set -o errexit
 cd "$(cd "$(dirname "$0")"; pwd)"
 [ -e './raw-sources' ] && rm -rf ./raw-sources
 mkdir ./raw-sources
-rm -rf ./origin-files/upstream-*.txt
+rm -rf ./origin-files/*.txt
 
 
 easylist=(
