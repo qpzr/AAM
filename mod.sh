@@ -17,6 +17,15 @@ easylist=(
   'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt'
 
 )
+hosts=(
+)
+strict_hosts=(
+)
+dead_hosts=(
+)
+ACL4SSR_BanAD_URL=
+ACL4SSR_BanProgramAD_URL=
+V2Fly_DLC_URL=
 
 # The script uses '^[a-zA-Z0-9\.-]+\.[a-zA-Z]+$' to match a domain in many cases
 # Some punny code (top) domains, like 'example.xn--q9jyb4c', will be ignored
