@@ -7,7 +7,7 @@ cd "$(cd "$(dirname "$0")"; pwd)"
 [ -e './raw-sources' ] && rm -rf ./raw-sources
 mkdir ./raw-sources
 rm -rf ./origin-files/*.txt
-touch ./origin-files/hosts.txt
+touch /origin-files/hosts.txt
 
 easylist=(
   "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt"
@@ -38,9 +38,6 @@ sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
 	grep -E '\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/wildcard-src-easylist.txt
 sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
-#cat easylist*.txt | grep -E "^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$" | sort | uniq >base-src-easylist.txt
-#cat easylist*.txt | grep -E "\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$" | sort | uniq >wildcard-src-easylist.txt
-#cat easylist*.txt | grep -E "^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^" | sort | uniq >whiterule-src-easylist.txt
 
 cd ../
 php make-addr.php
