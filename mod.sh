@@ -41,11 +41,6 @@ sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
 #cat easylist*.txt | grep -E "^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^" | sort | uniq >whiterule-src-easylist.txt
 
 cd ../
-
-source /etc/profile
-
-cd $(cd "$(dirname "$0")";pwd)
-echo
 php make-addr.php
 echo
 php ./tools/easylist-extend.php ../anti-ad-easylist.txt
