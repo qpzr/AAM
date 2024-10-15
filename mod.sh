@@ -30,18 +30,17 @@ for i in "${!easylist[@]}"; do
 		LC_ALL=C sort -u >>./origin-files/upstream-easylist.txt
 done
 
-Hosts-Processer() {
-	sed -e 's/[[:space:]]*#.*//g' -e 's/[[:space:]][[:space:]][[:space:]]*/ /g' -e 's/0\.0\.0\.0/127.0.0.1/g' -e 's/::/127.0.0.1/g' |
-		grep -E '^127\.0\.0\.1 [a-zA-Z0-9\.-]+\.[a-zA-Z]+$' | LC_ALL=C sort -u
-}
+rm -rf ./raw-sources/
 
-for i in "${!hosts[@]}"; do
-	echo "Start to download hosts-${i}..."
-	tMark="$(date +'%Y-%m-%d %H:%M:%S %Z')"
-	curl -o "./raw-sources/hosts-${i}.txt" --connect-timeout 60 -s "${hosts[$i]}"
-	echo -e "# hosts-${i} $tMark\n# ${hosts[$i]}" >>./origin-files/upstream-hosts.txt
-	tr -d '\r' <"./raw-sources/hosts-${i}.txt" | Hosts-Processer >>./origin-files/upstream-hosts.txt
-done
+sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
+	grep -E '^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/base-src-easylist.txt
+sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
+	grep -E '\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/wildcard-src-easylist.txt
+sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
+	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
+#cat easylist*.txt | grep -E "^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$" | sort | uniq >base-src-easylist.txt
+#cat easylist*.txt | grep -E "\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$" | sort | uniq >wildcard-src-easylist.txt
+#cat easylist*.txt | grep -E "^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^" | sort | uniq >whiterule-src-easylist.txt
 
 for i in "${!dead_hosts[@]}"
 do
@@ -65,17 +64,18 @@ do
   fi
 done
 
-rm -rf ./raw-sources/
+cd origin-files
 
-sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
-	grep -E '^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/base-src-easylist.txt
-sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
-	grep -E '\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/wildcard-src-easylist.txt
-sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
-	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
-#cat easylist*.txt | grep -E "^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$" | sort | uniq >base-src-easylist.txt
-#cat easylist*.txt | grep -E "\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$" | sort | uniq >wildcard-src-easylist.txt
-#cat easylist*.txt | grep -E "^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^" | sort | uniq >whiterule-src-easylist.txt
+cat hosts-*.txt | grep -v -E "^((#.*)|(\s*))$" \
+ | grep -v -E "^[0-9\.:]+\s+(ip6\-)?(localhost|loopback)$" \
+ | sed s/0.0.0.0/127.0.0.1/g | sed s/::/127.0.0.1/g | sort \
+ | uniq >base-src-hosts.txt
+
+
+cat dead-hosts-*.txt | grep -v -E "^(#|\!)" \
+ | sort \
+ | uniq >base-dead-hosts.txt
+ 
 
 cd ../
 php make-addr.php
