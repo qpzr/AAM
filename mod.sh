@@ -9,13 +9,13 @@ mkdir ./raw-sources
 rm -rf ./origin-files/*.txt
 
 easylist=(
-  "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt"
-  "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_224_Chinese/filter.txt"
-  "https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt"
-  "https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/data/combined_original_trackers.txt"
-  "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt"
-  "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt"
-  "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt"
+  'https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt'
+  'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_224_Chinese/filter.txt'
+  'https://raw.githubusercontent.com/easylist/easylist/gh-pages/easyprivacy.txt'
+  'https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/data/combined_original_trackers.txt'
+  'https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt'
+  'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt'
+  'https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt'
 )
 
 for i in "${!easylist[@]}"; do
