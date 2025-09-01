@@ -25,8 +25,12 @@ for i in "${!easylist[@]}"; do
 	curl -o "./raw-sources/easylist-${i}.txt" --connect-timeout 60 -s "${easylist[$i]}"
 	echo -e "! easylist-${i} $tMark\n! ${easylist[$i]}" >>./origin-files/upstream-easylist.txt
 	tr -d '\r' <"./raw-sources/easylist-${i}.txt" |
-		grep -E '^(@@)?\|\|?[a-zA-Z0-9\.\*-]+\.[a-zA-Z\*]+\^(\$[^=]+)?$' |
+		grep -E '^@@\|\|?[a-zA-Z0-9\.\*-]+\.[a-zA-Z\*]+(\^|\/)([^=]+)?$' |
 		sed -e "/\^\$elemhide$/d" -e "/\^\$generichide$/d" |
+  		LC_ALL=C sort -u >>./origin-files/upstream-white-easylist.txt
+	echo -e "! easylist-${i} $tMark\n! ${easylist[$i]}" >>./origin-files/upstream-easylist.txt
+	tr -d '\r' <"./raw-sources/easylist-${i}.txt" |
+		grep -E '^\|\|?[a-zA-Z0-9\.\*-]+\.[a-zA-Z\*]+\^(\$[^=]+)?$' |
 		LC_ALL=C sort -u >>./origin-files/upstream-easylist.txt
 done
 
@@ -36,9 +40,9 @@ sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
 	grep -E '^\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/base-src-easylist.txt
 sed -r -e '/^!/d' -e 's=^\|\|?=||=' ./origin-files/upstream-easylist.txt |
 	grep -E '\|\|([a-zA-Z0-9\.\*-]+)?\*([a-zA-Z0-9\.\*-]+)?\^(\$[^~]+)?$' | LC_ALL=C sort -u >./origin-files/wildcard-src-easylist.txt
-sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-easylist.txt |
-	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
-
+sed -r -e '/^!/d' -e 's=^@@\|\|?=@@||=' ./origin-files/upstream-white-easylist.txt |
+	grep -E '^@@\|\|[a-zA-Z0-9\.-]+\.[a-zA-Z]+\^(\$[^=]+)?$' | LC_ALL=C sort -u >./origin-files/whiterule-src-easylist.txt
+ 
 cd origin-files
 
 cat dead-hosts*.txt | grep -v -E "^(#|\!)" \
