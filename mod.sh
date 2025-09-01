@@ -23,7 +23,7 @@ for i in "${!easylist[@]}"; do
 	echo "Start to download easylist-${i}..."
 	tMark="$(date +'%Y-%m-%d %H:%M:%S %Z')"
 	curl -o "./raw-sources/easylist-${i}.txt" --connect-timeout 60 -s "${easylist[$i]}"
-	echo -e "! easylist-${i} $tMark\n! ${easylist[$i]}" >>./origin-files/upstream-easylist.txt
+	echo -e "! easylist-${i} $tMark\n! ${easylist[$i]}" >>./origin-files/upstream-white-easylist.txt
 	tr -d '\r' <"./raw-sources/easylist-${i}.txt" |
 		grep -E '^@@\|\|?[a-zA-Z0-9\.\*-]+\.[a-zA-Z\*]+(\^|\/)([^=]+)?$' |
 		sed -e "/\^\$elemhide$/d" -e "/\^\$generichide$/d" |
